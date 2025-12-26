@@ -336,7 +336,7 @@ export default function App() {
 
           <div className="hidden md:flex gap-8 text-[10px] font-bold uppercase tracking-widest text-text-muted">
 
-            <a href="#services" className="hover:text-pastel-primary-dark transition-colors">Services</a>
+            <a href="#services" className="hover:text-pastel-primary-dark transition-colors">Solutions</a>
 
             <a href="#projets" className="hover:text-pastel-primary-dark transition-colors">Projets</a>
 
@@ -368,7 +368,7 @@ export default function App() {
 
           >
 
-            FLUX & CIE FLOW STATE INNOVATION
+            FLUX & CIE AUTOMATISATION INTELLIGENTE
 
           </motion.div>
 
@@ -386,15 +386,15 @@ export default function App() {
 
             >
 
-              <Activity size={12} className="animate-pulse" /> Applications de Gestion Sur Mesure
+              <Activity size={12} className="animate-pulse" /> Automatisation Intelligente & Outils Métier Sur Mesure
 
             </motion.div>
 
             <h1 className="text-7xl md:text-[10rem] font-black tracking-tighter leading-[0.8] mb-10 text-text-primary">
 
-              AUTOMATISEZ <br/>
+              L'AUTOMATISATION <br/>
 
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-pastel-primary via-pastel-accent to-pastel-secondary">VOS PROCESS.</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-pastel-primary via-pastel-accent to-pastel-secondary">COMME UNE SIGNATURE.</span>
 
             </h1>
 
@@ -410,11 +410,19 @@ export default function App() {
 
                <h2 className="text-4xl md:text-7xl font-bold leading-tight text-text-primary drop-shadow-lg">
 
-                Des outils de <span className="text-pastel-primary-dark">gestion</span> <br/>
+                Workflows intelligents et outils de gestion sur mesure <br/>
 
-                qui s'adaptent à <span className="text-pastel-accent-dark italic serif font-light">votre métier.</span>
+                pour e-commerçants, reconditionneurs et destockeurs <br/>
+
+                qui veulent <span className="text-pastel-accent-dark italic serif font-light">scaler sans recruter.</span>
 
                </h2>
+
+               <p className="mt-8 text-2xl font-light text-text-secondary">
+
+                100% personnalisé. 0% template.
+
+               </p>
 
                <div className="mt-12 flex justify-center gap-2">
 
@@ -474,7 +482,8 @@ export default function App() {
 
                    <p className="text-pastel-primary-dark font-bold uppercase text-[10px] tracking-widest mb-2">Témoignage Client</p>
 
-                   <p className="text-lg font-bold text-text-primary">"Flux & Cie a développé l'outil qui centralise enfin toutes nos données métier."</p>
+                   <p className="text-lg font-bold text-text-primary">"Avant, je perdais 1h par jour à solliciter des avis clients. Maintenant, tout est automatisé : mes clients reçoivent un message personnalisé après chaque visite. J'ai doublé mes avis Google en 2 mois."</p>
+                   <p className="text-sm text-text-secondary mt-2">— Client Flux & Cie, Secteur Services</p>
 
                 </div>
 
@@ -490,11 +499,13 @@ export default function App() {
 
             <div className="space-y-12">
 
-              <RevealTitle subtitle="Notre approche">Libérez du temps, éliminez les erreurs.</RevealTitle>
+              <RevealTitle subtitle="Notre approche">Parce que votre business est unique.<br/>Vos outils devraient l'être aussi.</RevealTitle>
 
               <p className="text-2xl text-text-secondary font-light leading-relaxed">
 
-                Nous développons des <span className="text-text-primary font-medium underline decoration-pastel-primary/50">applications de gestion sur mesure</span> qui automatisent vos tâches répétitives et connectent vos outils existants.
+                Pas de template WordPress. Pas de Zapier générique. Pas de solution "clé en main" qui ne tourne jamais vraiment.<br/><br/>
+
+                Chaque <span className="text-text-primary font-medium underline decoration-pastel-primary/50">automatisation</span>, chaque <span className="text-text-primary font-medium underline decoration-pastel-primary/50">application</span> est pensée comme une signature : elle reflète VOTRE façon de travailler, pas celle imposée par un logiciel standard.
 
               </p>
 
@@ -504,11 +515,11 @@ export default function App() {
 
                 {[
 
-                  { icon: Zap, t: "Gain de Temps Immédiat", c: "text-pastel-coral", d: "Automatisez les tâches manuelles et répétitives de vos équipes." },
+                  { icon: Zap, t: "Automatisation Intelligente", c: "text-pastel-coral", d: "Workflows qui tournent 24/7 : génération de contenus IA, synchronisation multi-plateformes, notifications automatiques." },
 
-                  { icon: Layers, t: "Données Centralisées", c: "text-pastel-primary-dark", d: "Une source unique de vérité pour piloter votre activité." },
+                  { icon: Layers, t: "Outils de Gestion Sur Mesure", c: "text-pastel-primary-dark", d: "Applications métier développées spécifiquement pour vos besoins : tableaux de bord, interfaces de gestion, validation workflow." },
 
-                  { icon: Code, t: "Intégration sur Mesure", c: "text-pastel-accent-dark", d: "Connectez vos outils existants (ERP, CRM, API) sans friction." }
+                  { icon: Code, t: "Intégration Écosystème", c: "text-pastel-accent-dark", d: "Connexion fluide avec vos outils existants (Shopify, CRM, ERP, APIs) pour un écosystème unifié sans friction." }
 
                 ].map((item, i) => (
 
@@ -546,39 +557,6 @@ export default function App() {
 
 
 
-        {/* Section Stats Colorée */}
-
-        <section className="py-20 bg-gradient-to-r from-pastel-primary/10 via-pastel-accent/5 to-pastel-secondary/10 border-y border-pastel-primary/20">
-
-          <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12">
-
-             {[
-
-               { l: "Temps Gagné", v: "70%", c: "text-pastel-primary-dark" },
-
-               { l: "Erreurs Réduites", v: "-85%", c: "text-pastel-coral" },
-
-               { l: "ROI Moyen", v: "6 mois", c: "text-pastel-accent-dark" },
-
-               { l: "Satisfaction Client", v: "4.9/5", c: "text-pastel-secondary" }
-
-             ].map((s, i) => (
-
-               <div key={i} className="text-center group">
-
-                 <div className={`text-5xl font-black mb-2 transition-transform group-hover:scale-110 ${s.c}`}>{s.v}</div>
-
-                 <div className="text-[10px] font-bold tracking-widest text-text-muted uppercase">{s.l}</div>
-
-               </div>
-
-             ))}
-
-          </div>
-
-        </section>
-
-
 
         {/* Grille de Services Vibrant */}
 
@@ -588,9 +566,9 @@ export default function App() {
 
              <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
 
-                <RevealTitle subtitle="Nos Solutions">Conçues pour vos process métier.</RevealTitle>
+                <RevealTitle subtitle="Nos Expertises">Deux piliers complémentaires pour transformer vos process métier.</RevealTitle>
 
-                <p className="max-w-md text-text-secondary text-right">Des applications qui correspondent au fonctionnement réel de votre entreprise.</p>
+                <p className="max-w-md text-text-secondary text-right"></p>
 
              </div>
 
@@ -600,9 +578,9 @@ export default function App() {
 
                  icon={Cpu}
 
-                 title="Applications de Gestion"
+                 title="Automatisation Intelligente"
 
-                 description="Suivi de projets, gestion de commandes, tableaux de bord : des outils adaptés à vos besoins métier."
+                 description="Workflows qui tournent 24/7 pendant que vous vous concentrez sur votre cœur de métier. · Génération automatique de contenus (IA) · Synchronisation multi-plateformes · Notifications intelligentes (Telegram, email) · Intégrations API (Shopify, eBay, Google) · Traitement de données en masse. Idéal pour : e-commerce, reconditionnement, gestion de stock."
 
                  colorClass="bg-gradient-to-br from-pastel-accent to-pastel-coral"
 
@@ -612,9 +590,9 @@ export default function App() {
 
                  icon={Zap}
 
-                 title="Automatisation de Workflows"
+                 title="Outils de Gestion Sur Mesure"
 
-                 description="Envoi de mails, génération de documents, synchronisation de données : éliminez les tâches répétitives."
+                 description="Applications métier développées spécifiquement pour vos besoins opérationnels. · Interfaces de gestion produits personnalisées · Tableaux de bord métier temps réel · Systèmes de validation workflow · Outils de suivi et reporting · Applications web responsive. Idéal pour : pilotage d'activité, process complexes, équipes terrain."
 
                  colorClass="bg-gradient-to-br from-pastel-primary to-pastel-lavender"
 
@@ -624,9 +602,9 @@ export default function App() {
 
                  icon={Globe}
 
-                 title="Intégration d'Outils"
+                 title="Cas d'Usage : Mise en Ligne Automatisée"
 
-                 description="Connectez vos logiciels existants (ERP, CRM, API tierces) pour un écosystème unifié."
+                 description="Pour reconditionneurs & destockeurs qui veulent scaler. Le problème : Vous recevez 100-200 produits/semaine. Les mettre en ligne manuellement prend 15h. La solution : Upload CSV/photos ➝ traitement automatique · Génération titre/description optimisés SEO (IA) · Publication multi-plateformes (eBay, LBC, Shopify) · Interface validation pour cas complexes uniquement. Résultat : De 50 produits/mois à 500 sans recruter."
 
                  colorClass="bg-gradient-to-br from-pastel-secondary to-pastel-sky"
 
@@ -654,19 +632,29 @@ export default function App() {
 
             >
 
-              PARLONS DE <br/>
+              DISCUTONS DE <br/>
 
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-pastel-primary to-pastel-accent">VOS PROCESS.</span>
 
             </motion.h2>
 
-
+            <div className="max-w-3xl mx-auto mb-16">
+              <p className="text-xl text-text-secondary font-light leading-relaxed mb-6">
+                Vous avez une tâche répétitive qui vous bouffe du temps ?<br/>
+                Vous jonglez entre 5 outils qui ne se parlent pas ?<br/>
+                Vous voulez passer de 50 à 500 produits sans recruter ?
+              </p>
+              <p className="text-lg text-text-primary font-medium">
+                On prend 30 minutes ensemble pour voir ce qui est possible.<br/>
+                Pas de blabla commercial. Juste un diagnostic concret.
+              </p>
+            </div>
 
             <div className="flex flex-col md:flex-row gap-8 justify-center items-center mb-32">
 
               <button className="group relative px-12 py-6 bg-pastel-primary text-white rounded-full font-black text-xs uppercase tracking-widest overflow-hidden transition-all hover:pr-16 shadow-lg shadow-pastel-primary/30">
 
-                 <span className="relative z-10">Échanger sur vos besoins</span>
+                 <span className="relative z-10">Réserver un appel découverte</span>
 
                  <div className="absolute top-0 right-0 h-full w-0 group-hover:w-full bg-pastel-primary-dark transition-all duration-500" />
 
@@ -692,7 +680,8 @@ export default function App() {
 
                 <div className="text-[10px] font-bold text-pastel-primary-dark uppercase mb-6 tracking-widest underline decoration-2">Contact</div>
 
-                <p className="text-xl text-text-primary font-light underline underline-offset-8 decoration-pastel-primary/20 hover:decoration-pastel-primary transition-all cursor-pointer">hello@flux-cie.com</p>
+                <p className="text-xl text-text-primary font-light underline underline-offset-8 decoration-pastel-primary/20 hover:decoration-pastel-primary transition-all cursor-pointer mb-3">hello@flux-cie.com</p>
+                <p className="text-sm text-text-secondary font-light">Telegram : @fluxetcie</p>
 
               </div>
 
@@ -700,7 +689,7 @@ export default function App() {
 
                 <div className="text-[10px] font-bold text-pastel-primary-dark uppercase mb-6 tracking-widest">Localisation</div>
 
-                <p className="text-sm text-text-secondary font-light">Basé à Paris — <br/>Opérant dans le monde entier.</p>
+                <p className="text-sm text-text-secondary font-light">Basé à Guingamp, Bretagne — <br/>Clients partout en France (et au-delà)</p>
 
               </div>
 
@@ -724,7 +713,7 @@ export default function App() {
 
             <div className="mt-20 text-[9px] font-bold tracking-[0.5em] text-text-light uppercase">
 
-              Flux & Cie Digital Studio © 2024 — Beyond the Interface
+              Flux & Cie — L'automatisation comme une signature © 2025 — Fait avec ❤️ en Bretagne
 
             </div>
 
