@@ -11,6 +11,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 6rem;
+  overflow-x: hidden;
 }
 
 body {
@@ -20,6 +21,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overscroll-behavior: none;
+  overflow-x: hidden;
 }
 
 /* Smooth scroll optimisé pour performances */
@@ -36,5 +38,19 @@ body {
   will-change: transform;
   transform: translateZ(0);
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+}
+
+/* Smooth scrolling ultra-optimisé */
+* {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Performance maximale sur les animations */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-snap-type: y proximity;
+  }
 }
 

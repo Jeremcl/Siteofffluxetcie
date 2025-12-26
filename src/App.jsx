@@ -166,7 +166,7 @@ const RevealTitle = ({ children, subtitle, light = false }) => {
 
           animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
 
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
 
           className="text-pastel-primary-dark font-bold tracking-[0.4em] text-[10px] uppercase mb-4 block"
 
@@ -186,7 +186,7 @@ const RevealTitle = ({ children, subtitle, light = false }) => {
 
           animate={isInView ? { y: 0 } : { y: "100%" }}
 
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
 
           className={`text-4xl md:text-7xl font-bold tracking-tight leading-tight ${light ? 'text-text-primary' : 'text-text-primary'}`}
 
@@ -226,7 +226,7 @@ const ExpertiseCard = ({ icon: Icon, title, description, colorClass }) => {
 
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
 
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
 
         className="group relative p-1 px-1 rounded-[2.5rem] bg-gradient-to-br from-pastel-primary/20 to-transparent border border-pastel-primary/30 hover:border-pastel-primary-dark/50 transition-all duration-300 overflow-hidden"
 
@@ -302,15 +302,15 @@ export default function App() {
 
 
 
-  // Transitions optimisées pour fluidité maximale
+  // Transitions ultra-optimisées pour fluidité maximale
 
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.08, 0.15], [1, 1, 0]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.06, 0.12], [1, 1, 0]);
 
-  const heroScale = useTransform(scrollYProgress, [0, 0.15], [1, 0.92]);
+  const heroScale = useTransform(scrollYProgress, [0, 0.12], [1, 0.95]);
 
-  const introOpacity = useTransform(scrollYProgress, [0.12, 0.2, 0.28], [0, 1, 0]);
+  const introOpacity = useTransform(scrollYProgress, [0.1, 0.16, 0.22], [0, 1, 0]);
 
-  const mainOpacity = useTransform(scrollYProgress, [0.25, 0.32], [0, 1]);
+  const mainOpacity = useTransform(scrollYProgress, [0.2, 0.26], [0, 1]);
 
   
 
@@ -382,7 +382,7 @@ export default function App() {
 
       {/* --- HERO SECTION REVISITÉE --- */}
 
-      <section id="hero" className="relative h-[180vh] w-full">
+      <section id="hero" className="relative h-[160vh] w-full">
 
         <div className="sticky top-0 h-screen flex flex-col items-center justify-center px-6 text-center overflow-hidden">
 
@@ -404,7 +404,7 @@ export default function App() {
 
 
 
-          <motion.div style={{ opacity: heroOpacity, scale: heroScale }} className="relative z-10 max-w-5xl">
+          <motion.div style={{ opacity: heroOpacity, scale: heroScale }} className="relative z-10 max-w-5xl mx-auto text-center">
 
             <motion.div
 
@@ -420,7 +420,7 @@ export default function App() {
 
             </motion.div>
 
-            <h1 className="text-6xl md:text-[9rem] font-black tracking-tighter leading-[0.85] mb-10 text-text-primary">
+            <h1 className="text-6xl md:text-[9rem] font-black tracking-tighter leading-[0.85] mb-10 text-text-primary text-center">
 
               L'AUTOMATISATION <br/>
 
@@ -492,7 +492,7 @@ export default function App() {
 
                 viewport={{ once: false, amount: 0.3 }}
 
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
 
                 className="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl border border-pastel-primary/20"
 
@@ -570,7 +570,7 @@ export default function App() {
 
                     viewport={{ once: false, amount: 0.3 }}
 
-                    transition={{ duration: 0.5, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ duration: 0.4, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
 
                     className="flex gap-6 p-6 rounded-2xl bg-white/80 border border-pastel-primary/20 hover:bg-white transition-all duration-300 shadow-sm hover:shadow-md"
 
@@ -673,7 +673,7 @@ export default function App() {
 
               viewport={{ once: false, amount: 0.3 }}
 
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
 
               className="text-6xl md:text-[8rem] font-black tracking-tighter leading-none mb-16 text-text-primary"
 
@@ -689,7 +689,7 @@ export default function App() {
               initial={{ y: 20, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: false, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.4, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
               className="max-w-3xl mx-auto mb-16 space-y-6"
             >
               <p className="text-lg md:text-xl text-text-secondary font-light leading-relaxed">
