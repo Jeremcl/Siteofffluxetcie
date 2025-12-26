@@ -2,17 +2,17 @@ import React, { useState, useEffect, useRef } from 'react';
 
 import { motion, useScroll, useTransform, useSpring, useInView, useMotionValue } from 'framer-motion';
 
-import { 
+import {
 
-  Cpu, 
+  Cpu,
 
-  Layers, 
+  Layers,
 
-  Zap, 
+  Zap,
 
-  ArrowRight, 
+  ArrowRight,
 
-  MousePointer2, 
+  MousePointer2,
 
   Sparkles,
 
@@ -24,7 +24,9 @@ import {
 
   Code,
 
-  Flame
+  Flame,
+
+  ChevronUp
 
 } from 'lucide-react';
 
@@ -228,9 +230,9 @@ const ExpertiseCard = ({ icon: Icon, title, description, colorClass }) => {
 
       >
 
-        <div className="p-8 rounded-[2.4rem] bg-white/90 backdrop-blur-2xl shadow-lg">
+        <div className="p-8 rounded-[2.4rem] bg-white/90 backdrop-blur-2xl shadow-lg h-full flex flex-col">
 
-           <div className={`w-14 h-14 rounded-2xl ${colorClass} flex items-center justify-center mb-8 shadow-xl relative overflow-hidden group-hover:scale-110 transition-transform`}>
+           <div className={`w-14 h-14 rounded-2xl ${colorClass} flex items-center justify-center mb-6 shadow-xl relative overflow-hidden group-hover:scale-110 transition-transform`}>
 
               <div className="absolute inset-0 bg-white/30 animate-pulse" />
 
@@ -238,11 +240,11 @@ const ExpertiseCard = ({ icon: Icon, title, description, colorClass }) => {
 
            </div>
 
-           <h3 className="text-2xl font-bold mb-4 text-text-primary group-hover:text-pastel-primary-dark transition-colors">{title}</h3>
+           <h3 className="text-xl md:text-2xl font-bold mb-4 text-text-primary group-hover:text-pastel-primary-dark transition-colors">{title}</h3>
 
-           <p className="text-text-secondary leading-relaxed font-light mb-6 text-sm">{description}</p>
+           <p className="text-text-secondary leading-relaxed font-light mb-6 text-sm md:text-base flex-grow">{description}</p>
 
-           <div className="flex items-center gap-2 text-text-muted text-[10px] font-bold uppercase tracking-widest group-hover:text-pastel-primary-dark transition-colors">
+           <div className="flex items-center gap-2 text-text-muted text-[10px] font-bold uppercase tracking-widest group-hover:text-pastel-primary-dark transition-colors mt-auto">
 
               En savoir plus <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
 
@@ -270,6 +272,32 @@ export default function App() {
 
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
 
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+
+
+  useEffect(() => {
+
+    const handleScroll = () => {
+
+      setShowScrollTop(window.scrollY > 500);
+
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => window.removeEventListener('scroll', handleScroll);
+
+  }, []);
+
+
+
+  const scrollToTop = () => {
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  };
+
 
 
   // Resserage des zones de transition pour éviter le blanc
@@ -292,7 +320,7 @@ export default function App() {
 
   return (
 
-    <div className="bg-bg-main text-text-primary font-sans selection:bg-pastel-accent selection:text-text-primary min-h-screen">
+    <div className="bg-bg-main text-text-primary font-sans selection:bg-pastel-accent selection:text-text-primary min-h-screen scroll-smooth">
 
       <AnimatedBackground />
 
@@ -312,7 +340,7 @@ export default function App() {
 
       <nav className="fixed top-0 w-full p-6 flex justify-between items-center z-40 bg-white/80 backdrop-blur-md border-b border-pastel-primary/20">
 
-        <div className="text-xl font-black tracking-tighter flex items-center gap-3">
+        <a href="#" className="text-xl font-black tracking-tighter flex items-center gap-3 cursor-pointer group">
 
           <motion.div
 
@@ -320,7 +348,7 @@ export default function App() {
 
             transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
 
-            className="w-8 h-8 bg-gradient-to-tr from-pastel-primary to-pastel-accent rounded-lg flex items-center justify-center shadow-lg shadow-pastel-primary/30"
+            className="w-8 h-8 bg-gradient-to-tr from-pastel-primary to-pastel-accent rounded-lg flex items-center justify-center shadow-lg shadow-pastel-primary/30 group-hover:shadow-xl group-hover:shadow-pastel-primary/50 transition-shadow"
 
           >
 
@@ -330,19 +358,19 @@ export default function App() {
 
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-text-primary to-text-secondary">FLUX & CIE</span>
 
-        </div>
+        </a>
 
         <div className="flex items-center gap-8">
 
           <div className="hidden md:flex gap-8 text-[10px] font-bold uppercase tracking-widest text-text-muted">
 
-            <a href="#services" className="hover:text-pastel-primary-dark transition-colors">Solutions</a>
+            <a href="#solutions" className="hover:text-pastel-primary-dark transition-colors cursor-pointer">Solutions</a>
 
-            <a href="#projets" className="hover:text-pastel-primary-dark transition-colors">Projets</a>
+            <a href="#contact" className="hover:text-pastel-primary-dark transition-colors cursor-pointer">Contact</a>
 
           </div>
 
-          <button className="px-6 py-2.5 bg-pastel-primary text-white rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-pastel-primary-dark transition-all shadow-lg shadow-pastel-primary/30">Contact</button>
+          <a href="#contact" className="px-6 py-2.5 bg-pastel-primary text-white rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-pastel-primary-dark transition-all shadow-lg shadow-pastel-primary/30 cursor-pointer">Discutons</a>
 
         </div>
 
@@ -352,7 +380,7 @@ export default function App() {
 
       {/* --- HERO SECTION REVISITÉE --- */}
 
-      <section className="relative h-[250vh] w-full">
+      <section id="hero" className="relative h-[250vh] w-full">
 
         <div className="sticky top-0 h-screen flex flex-col items-center justify-center px-6 text-center overflow-hidden">
 
@@ -390,11 +418,11 @@ export default function App() {
 
             </motion.div>
 
-            <h1 className="text-7xl md:text-[10rem] font-black tracking-tighter leading-[0.8] mb-10 text-text-primary">
+            <h1 className="text-6xl md:text-[9rem] font-black tracking-tighter leading-[0.85] mb-10 text-text-primary">
 
               L'AUTOMATISATION <br/>
 
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-pastel-primary via-pastel-accent to-pastel-secondary">COMME UNE SIGNATURE.</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-pastel-primary via-pastel-accent to-pastel-secondary">COMME UNE<br className="md:hidden"/> SIGNATURE.</span>
 
             </h1>
 
@@ -408,19 +436,15 @@ export default function App() {
 
             <div className="max-w-4xl">
 
-               <h2 className="text-4xl md:text-7xl font-bold leading-tight text-text-primary drop-shadow-lg">
+               <h2 className="text-3xl md:text-6xl font-bold leading-tight text-text-primary drop-shadow-lg max-w-5xl mx-auto">
 
-                Workflows intelligents et outils de gestion sur mesure <br/>
-
-                pour e-commerçants, reconditionneurs et destockeurs <br/>
-
-                qui veulent <span className="text-pastel-accent-dark italic serif font-light">scaler sans recruter.</span>
+                Workflows intelligents et outils de gestion sur mesure pour e-commerçants, reconditionneurs et destockeurs qui veulent <span className="text-pastel-accent-dark italic serif font-light">scaler sans recruter.</span>
 
                </h2>
 
-               <p className="mt-8 text-2xl font-light text-text-secondary">
+               <p className="mt-10 text-xl md:text-3xl font-light text-text-secondary">
 
-                100% personnalisé. 0% template.
+                100% personnalisé. <span className="text-pastel-primary-dark font-medium">0% template.</span>
 
                </p>
 
@@ -452,7 +476,7 @@ export default function App() {
 
         {/* Section Showcase */}
 
-        <section id="services" className="py-32 px-6 max-w-7xl mx-auto">
+        <section id="approche" className="py-24 md:py-32 px-6 max-w-7xl mx-auto scroll-mt-24">
 
           <div className="grid lg:grid-cols-2 gap-20 items-center">
 
@@ -478,12 +502,12 @@ export default function App() {
 
                 <div className="absolute inset-0 bg-gradient-to-t from-bg-alt via-transparent to-transparent" />
 
-                <div className="absolute bottom-10 left-10 right-10 p-8 rounded-3xl bg-white/90 backdrop-blur-xl border border-pastel-primary/30">
+                <div className="absolute bottom-10 left-10 right-10 p-6 md:p-8 rounded-3xl bg-white/95 backdrop-blur-xl border border-pastel-primary/30 shadow-2xl">
 
-                   <p className="text-pastel-primary-dark font-bold uppercase text-[10px] tracking-widest mb-2">Témoignage Client</p>
+                   <p className="text-pastel-primary-dark font-bold uppercase text-[10px] tracking-widest mb-3">Témoignage Client</p>
 
-                   <p className="text-lg font-bold text-text-primary">"Avant, je perdais 1h par jour à solliciter des avis clients. Maintenant, tout est automatisé : mes clients reçoivent un message personnalisé après chaque visite. J'ai doublé mes avis Google en 2 mois."</p>
-                   <p className="text-sm text-text-secondary mt-2">— Client Flux & Cie, Secteur Services</p>
+                   <p className="text-base md:text-lg font-bold text-text-primary leading-relaxed mb-3">"Avant, je perdais 1h par jour à solliciter des avis clients. Maintenant, tout est automatisé : mes clients reçoivent un message personnalisé après chaque visite. J'ai doublé mes avis Google en 2 mois."</p>
+                   <p className="text-xs md:text-sm text-text-secondary italic">— Client Flux & Cie, Secteur Services</p>
 
                 </div>
 
@@ -501,11 +525,16 @@ export default function App() {
 
               <RevealTitle subtitle="Notre approche">Parce que votre business est unique.<br/>Vos outils devraient l'être aussi.</RevealTitle>
 
-              <p className="text-2xl text-text-secondary font-light leading-relaxed">
+              <p className="text-xl md:text-2xl text-text-secondary font-light leading-relaxed">
 
-                Pas de template WordPress. Pas de Zapier générique. Pas de solution "clé en main" qui ne tourne jamais vraiment.<br/><br/>
+                Pas de template WordPress. Pas de Zapier générique.<br/>
+                Pas de solution "clé en main" qui ne tourne jamais vraiment.
 
-                Chaque <span className="text-text-primary font-medium underline decoration-pastel-primary/50">automatisation</span>, chaque <span className="text-text-primary font-medium underline decoration-pastel-primary/50">application</span> est pensée comme une signature : elle reflète VOTRE façon de travailler, pas celle imposée par un logiciel standard.
+              </p>
+
+              <p className="text-xl md:text-2xl text-text-secondary font-light leading-relaxed mt-6">
+
+                Chaque <span className="text-text-primary font-medium underline decoration-pastel-primary/50">automatisation</span>, chaque <span className="text-text-primary font-medium underline decoration-pastel-primary/50">application</span> est pensée comme une signature : elle reflète <span className="text-text-primary font-semibold">VOTRE</span> façon de travailler, pas celle imposée par un logiciel standard.
 
               </p>
 
@@ -560,19 +589,17 @@ export default function App() {
 
         {/* Grille de Services Vibrant */}
 
-        <section className="py-32 px-6">
+        <section id="solutions" className="py-24 md:py-32 px-6 scroll-mt-24">
 
           <div className="max-w-7xl mx-auto">
 
              <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
 
-                <RevealTitle subtitle="Nos Expertises">Deux piliers complémentaires pour transformer vos process métier.</RevealTitle>
-
-                <p className="max-w-md text-text-secondary text-right"></p>
+                <RevealTitle subtitle="Nos Expertises">Deux piliers complémentaires<br/>pour transformer vos process.</RevealTitle>
 
              </div>
 
-             <div className="grid md:grid-cols-3 gap-8">
+             <div className="grid md:grid-cols-3 gap-8 items-stretch">
 
                <ExpertiseCard
 
@@ -620,7 +647,7 @@ export default function App() {
 
         {/* Footer & CTA Massif */}
 
-        <section className="pt-32 pb-10 px-6 overflow-hidden relative">
+        <section id="contact" className="pt-24 md:pt-32 pb-10 px-6 overflow-hidden relative scroll-mt-24">
 
           <div className="max-w-5xl mx-auto text-center relative z-10">
 
@@ -638,37 +665,37 @@ export default function App() {
 
             </motion.h2>
 
-            <div className="max-w-3xl mx-auto mb-16">
-              <p className="text-xl text-text-secondary font-light leading-relaxed mb-6">
+            <div className="max-w-3xl mx-auto mb-16 space-y-6">
+              <p className="text-lg md:text-xl text-text-secondary font-light leading-relaxed">
                 Vous avez une tâche répétitive qui vous bouffe du temps ?<br/>
                 Vous jonglez entre 5 outils qui ne se parlent pas ?<br/>
                 Vous voulez passer de 50 à 500 produits sans recruter ?
               </p>
-              <p className="text-lg text-text-primary font-medium">
+              <p className="text-base md:text-lg text-text-primary font-medium border-l-4 border-pastel-primary pl-6">
                 On prend 30 minutes ensemble pour voir ce qui est possible.<br/>
                 Pas de blabla commercial. Juste un diagnostic concret.
               </p>
             </div>
 
-            <div className="flex flex-col md:flex-row gap-8 justify-center items-center mb-32">
+            <div className="flex flex-col md:flex-row gap-6 md:gap-8 justify-center items-center mb-32">
 
-              <button className="group relative px-12 py-6 bg-pastel-primary text-white rounded-full font-black text-xs uppercase tracking-widest overflow-hidden transition-all hover:pr-16 shadow-lg shadow-pastel-primary/30">
+              <a href="mailto:hello@flux-cie.com" className="group relative px-10 md:px-12 py-5 md:py-6 bg-pastel-primary text-white rounded-full font-black text-xs uppercase tracking-widest overflow-hidden transition-all hover:pr-14 md:hover:pr-16 shadow-lg shadow-pastel-primary/30 hover:shadow-xl hover:shadow-pastel-primary/50">
 
                  <span className="relative z-10">Réserver un appel découverte</span>
 
                  <div className="absolute top-0 right-0 h-full w-0 group-hover:w-full bg-pastel-primary-dark transition-all duration-500" />
 
-                 <ArrowRight className="absolute right-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-white" />
+                 <ArrowRight className="absolute right-5 md:right-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-white" />
 
-              </button>
+              </a>
 
               <div className="h-px w-20 bg-pastel-primary/20 md:block hidden" />
 
-              <button className="text-[10px] font-bold uppercase tracking-[0.4em] text-text-muted hover:text-text-primary transition-colors">
+              <a href="#solutions" className="text-[10px] font-bold uppercase tracking-[0.4em] text-text-muted hover:text-pastel-primary-dark transition-colors">
 
-                 Voir nos réalisations
+                 Voir nos solutions
 
-              </button>
+              </a>
 
             </div>
 
@@ -676,20 +703,20 @@ export default function App() {
 
             <div className="grid md:grid-cols-3 gap-12 pt-20 border-t border-pastel-primary/20 text-left">
 
-              <div>
+              <div className="space-y-4">
 
                 <div className="text-[10px] font-bold text-pastel-primary-dark uppercase mb-6 tracking-widest underline decoration-2">Contact</div>
 
-                <p className="text-xl text-text-primary font-light underline underline-offset-8 decoration-pastel-primary/20 hover:decoration-pastel-primary transition-all cursor-pointer mb-3">hello@flux-cie.com</p>
-                <p className="text-sm text-text-secondary font-light">Telegram : @fluxetcie</p>
+                <a href="mailto:hello@flux-cie.com" className="block text-lg md:text-xl text-text-primary font-light underline underline-offset-8 decoration-pastel-primary/20 hover:decoration-pastel-primary transition-all">hello@flux-cie.com</a>
+                <a href="https://t.me/fluxetcie" target="_blank" rel="noopener noreferrer" className="block text-sm text-text-secondary font-light hover:text-pastel-primary-dark transition-colors">📱 Telegram : @fluxetcie</a>
 
               </div>
 
-              <div>
+              <div className="space-y-4">
 
                 <div className="text-[10px] font-bold text-pastel-primary-dark uppercase mb-6 tracking-widest">Localisation</div>
 
-                <p className="text-sm text-text-secondary font-light">Basé à Guingamp, Bretagne — <br/>Clients partout en France (et au-delà)</p>
+                <p className="text-sm text-text-secondary font-light leading-relaxed">📍 Basé à Guingamp, Bretagne<br/>🇫🇷 Clients partout en France (et au-delà)</p>
 
               </div>
 
@@ -722,6 +749,32 @@ export default function App() {
         </section>
 
       </motion.div>
+
+
+
+      {/* Bouton Scroll to Top */}
+
+      <motion.button
+
+        initial={{ opacity: 0, scale: 0 }}
+
+        animate={{
+
+          opacity: showScrollTop ? 1 : 0,
+
+          scale: showScrollTop ? 1 : 0
+
+        }}
+
+        onClick={scrollToTop}
+
+        className="fixed bottom-8 right-8 z-50 w-14 h-14 bg-gradient-to-br from-pastel-primary to-pastel-accent text-white rounded-full shadow-2xl shadow-pastel-primary/40 flex items-center justify-center hover:scale-110 transition-transform cursor-pointer group"
+
+      >
+
+        <ChevronUp className="w-6 h-6 group-hover:-translate-y-1 transition-transform" />
+
+      </motion.button>
 
     </div>
 
