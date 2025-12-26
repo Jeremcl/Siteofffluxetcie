@@ -150,7 +150,7 @@ const RevealTitle = ({ children, subtitle, light = false }) => {
 
   const ref = useRef(null);
 
-  const isInView = useInView(ref, { once: false, amount: 0.5 });
+  const isInView = useInView(ref, { once: false, amount: 0.3 });
 
 
 
@@ -166,7 +166,7 @@ const RevealTitle = ({ children, subtitle, light = false }) => {
 
           animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
 
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
 
           className="text-pastel-primary-dark font-bold tracking-[0.4em] text-[10px] uppercase mb-4 block"
 
@@ -186,7 +186,7 @@ const RevealTitle = ({ children, subtitle, light = false }) => {
 
           animate={isInView ? { y: 0 } : { y: "100%" }}
 
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
 
           className={`text-4xl md:text-7xl font-bold tracking-tight leading-tight ${light ? 'text-text-primary' : 'text-text-primary'}`}
 
@@ -210,7 +210,7 @@ const ExpertiseCard = ({ icon: Icon, title, description, colorClass }) => {
 
   const ref = useRef(null);
 
-  const isInView = useInView(ref, { once: false, amount: 0.2 });
+  const isInView = useInView(ref, { once: false, amount: 0.15 });
 
 
 
@@ -226,7 +226,9 @@ const ExpertiseCard = ({ icon: Icon, title, description, colorClass }) => {
 
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
 
-        className="group relative p-1 px-1 rounded-[2.5rem] bg-gradient-to-br from-pastel-primary/20 to-transparent border border-pastel-primary/30 hover:border-pastel-primary-dark/50 transition-all duration-500 overflow-hidden"
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+
+        className="group relative p-1 px-1 rounded-[2.5rem] bg-gradient-to-br from-pastel-primary/20 to-transparent border border-pastel-primary/30 hover:border-pastel-primary-dark/50 transition-all duration-300 overflow-hidden"
 
       >
 
@@ -300,15 +302,15 @@ export default function App() {
 
 
 
-  // Resserage des zones de transition pour éviter le blanc
+  // Transitions optimisées pour fluidité maximale
 
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.1, 0.2], [1, 1, 0]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.08, 0.15], [1, 1, 0]);
 
-  const heroScale = useTransform(scrollYProgress, [0, 0.2], [1, 0.85]);
+  const heroScale = useTransform(scrollYProgress, [0, 0.15], [1, 0.92]);
 
-  const introOpacity = useTransform(scrollYProgress, [0.15, 0.25, 0.35], [0, 1, 0]);
+  const introOpacity = useTransform(scrollYProgress, [0.12, 0.2, 0.28], [0, 1, 0]);
 
-  const mainOpacity = useTransform(scrollYProgress, [0.3, 0.4], [0, 1]);
+  const mainOpacity = useTransform(scrollYProgress, [0.25, 0.32], [0, 1]);
 
   
 
@@ -380,7 +382,7 @@ export default function App() {
 
       {/* --- HERO SECTION REVISITÉE --- */}
 
-      <section id="hero" className="relative h-[250vh] w-full">
+      <section id="hero" className="relative h-[180vh] w-full">
 
         <div className="sticky top-0 h-screen flex flex-col items-center justify-center px-6 text-center overflow-hidden">
 
@@ -422,7 +424,7 @@ export default function App() {
 
               L'AUTOMATISATION <br/>
 
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-pastel-primary via-pastel-accent to-pastel-secondary">COMME UNE<br className="md:hidden"/> SIGNATURE.</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-pastel-primary via-pastel-accent to-pastel-secondary">COMME UNE SIGNATURE.</span>
 
             </h1>
 
@@ -484,7 +486,13 @@ export default function App() {
 
               <motion.div
 
-                whileInView={{ rotate: [-2, 0], scale: [0.95, 1] }}
+                initial={{ rotate: -2, scale: 0.95, opacity: 0 }}
+
+                whileInView={{ rotate: 0, scale: 1, opacity: 1 }}
+
+                viewport={{ once: false, amount: 0.3 }}
+
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
 
                 className="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl border border-pastel-primary/20"
 
@@ -496,7 +504,7 @@ export default function App() {
 
                   alt="Abstract liquid art"
 
-                  className="w-full h-[650px] object-cover hover:scale-105 transition-transform duration-1000"
+                  className="w-full h-[650px] object-cover hover:scale-105 transition-transform duration-700 ease-out"
 
                 />
 
@@ -515,7 +523,7 @@ export default function App() {
 
               {/* Glow background */}
 
-              <div className="absolute -inset-10 bg-pastel-primary/15 blur-[100px] rounded-full -z-10 group-hover:bg-pastel-primary/25 transition-all" />
+              <div className="absolute -inset-10 bg-pastel-primary/15 blur-[100px] rounded-full -z-10 group-hover:bg-pastel-primary/25 transition-all duration-500" />
 
             </div>
 
@@ -556,9 +564,15 @@ export default function App() {
 
                     key={i}
 
-                    whileInView={{ x: [-20, 0], opacity: [0, 1] }}
+                    initial={{ x: -20, opacity: 0 }}
 
-                    className="flex gap-6 p-6 rounded-2xl bg-white/80 border border-pastel-primary/20 hover:bg-white transition-colors shadow-sm"
+                    whileInView={{ x: 0, opacity: 1 }}
+
+                    viewport={{ once: false, amount: 0.3 }}
+
+                    transition={{ duration: 0.5, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+
+                    className="flex gap-6 p-6 rounded-2xl bg-white/80 border border-pastel-primary/20 hover:bg-white transition-all duration-300 shadow-sm hover:shadow-md"
 
                   >
 
@@ -653,7 +667,13 @@ export default function App() {
 
             <motion.h2
 
-              whileInView={{ scale: [0.9, 1], opacity: [0, 1] }}
+              initial={{ scale: 0.9, opacity: 0 }}
+
+              whileInView={{ scale: 1, opacity: 1 }}
+
+              viewport={{ once: false, amount: 0.3 }}
+
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
 
               className="text-6xl md:text-[8rem] font-black tracking-tighter leading-none mb-16 text-text-primary"
 
@@ -665,7 +685,13 @@ export default function App() {
 
             </motion.h2>
 
-            <div className="max-w-3xl mx-auto mb-16 space-y-6">
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: false, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="max-w-3xl mx-auto mb-16 space-y-6"
+            >
               <p className="text-lg md:text-xl text-text-secondary font-light leading-relaxed">
                 Vous avez une tâche répétitive qui vous bouffe du temps ?<br/>
                 Vous jonglez entre 5 outils qui ne se parlent pas ?<br/>
@@ -675,7 +701,7 @@ export default function App() {
                 On prend 30 minutes ensemble pour voir ce qui est possible.<br/>
                 Pas de blabla commercial. Juste un diagnostic concret.
               </p>
-            </div>
+            </motion.div>
 
             <div className="flex flex-col md:flex-row gap-6 md:gap-8 justify-center items-center mb-32">
 
